@@ -65,6 +65,10 @@
       font-weight: 600;
     }
 
+    .link {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
     .stars {
       display: flex;
       gap: 4px;
@@ -80,6 +84,11 @@
       font-size: 0.95rem;
       color: #cfcfe8;
     }
+     .subdescription {
+      font-size: 0.8rem;
+      color: #ffffff;
+    }
+
   </style>
 </head>
 
@@ -106,15 +115,19 @@
     const apps = [
       {
         name: "Raveoir Mail",
+        link: "https://raveoir.vercel.app/",
         logo: "docs/apps/raven-logo.png",
         stars: 5,
-        description: "Fast as a pigeon, reliable as a pager."
+        description: "Fast as a pigeon, reliable as a pager.",
+        subdescription: "It is a realy efficient EMAIL application that was made in two days."
       },
       {
         name: "Pagion Messenger",
+        link: "https://pagion.vercel.app/",
         logo: "docs/apps/pagion-logo.png",
         stars: 4,
-        description: "Fast as a raven."
+        description: "Fast as a raven.",
+        subdescription: "One star off cause it is a bit hard to get others UID's."
       }
     ];
 
@@ -138,8 +151,12 @@
           <img src="${app.logo}" alt="${app.name} logo" />
           <div class="app-name">${app.name}</div>
         </div>
-        <div class="stars">${starsHtml}</div>
+        
+        <a class="link" href="${app.link}" target="_blank" rel="noopener">
+          ${link}
+        </a>
         <div class="description">${app.description}</div>
+        <div class="subdescription">${app.subdescription}</div>
       `;
 
       appsContainer.appendChild(card);
