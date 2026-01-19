@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Web It Yourself</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0f0f14;
+      color: #eaeaf0;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .header img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+    }
+
+    .header h1 {
+      margin: 1rem 0 0.5rem;
+      font-size: 2.2rem;
+    }
+
+    .apps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .app {
+      background: #171722;
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .app-header img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .app-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .stars {
+      display: flex;
+      gap: 4px;
+      margin: 0.6rem 0;
+    }
+
+    .stars img {
+      width: 16px;
+      height: 16px;
+    }
+
+    .description {
+      font-size: 0.95rem;
+      color: #cfcfe8;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+      <img src="docs/WIY-logo.jpg" alt="Organization Logo" />
+      <h1>Web It Yourself</h1>
+      <p>Reinventing the web, one app at a time.</p>
+    </div>
+
+    <!-- APPS -->
+    <div class="apps" id="apps"></div>
+
+  </div>
+
+  <script>
+    /* =========================
+       DEFINE YOUR APPS HERE
+       ========================= */
+
+    const apps = [
+      {
+        name: "Raveoir Mail",
+        logo: "docs/apps/raveoir-logo.png",
+        stars: 5,
+        description: "Fast as a pigeon, reliable as a pager."
+      },
+      {
+        name: "Pagion Messenger",
+        logo: "docs/apps/pagion-logo.png",
+        stars: 4,
+        description: "Fast as a raven."
+      }
+    ];
+
+    /* =========================
+       RENDER APPS
+       ========================= */
+
+    const appsContainer = document.getElementById("apps");
+
+    apps.forEach(app => {
+      const card = document.createElement("div");
+      card.className = "app";
+
+      let starsHtml = "";
+      for (let i = 0; i < app.stars; i++) {
+        starsHtml += `<img src="docs/star.png" alt="star" />`;
+      }
+
+      card.innerHTML = `
+        <div class="app-header">
+          <img src="${app.logo}" alt="${app.name} logo" />
+          <div class="app-name">${app.name}</div>
+        </div>
+        <div class="stars">${starsHtml}</div>
+        <div class="description">${app.description}</div>
+      `;
+
+      appsContainer.appendChild(card);
+    });
+  </script>
+</body>
+</html>
